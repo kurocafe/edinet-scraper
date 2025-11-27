@@ -1,0 +1,35 @@
+# Git関連
+.git
+.gitignore
+
+# 環境変数ファイル
+.env
+
+# ビルド成果物
+edinet-scraper
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# テスト関連
+*.test
+*.out
+coverage.*
+*.coverprofile
+
+# エディタ/IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# ドキュメント
+*.md
+!README.md
+
+# その他
+.DS_Store
+Thumbs.db

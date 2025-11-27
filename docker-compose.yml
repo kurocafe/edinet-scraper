@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  edinet-scraper:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: edinet-scraper:latest
+    container_name: edinet-scraper
+    env_file:
+      - .env
+    # デフォルトの日付を上書きする場合はコメントを外す
+    # command: ["-date=2024-02-01"]
+    # または環境変数で指定
+    # environment:
+    #   - DATE=2024-02-01

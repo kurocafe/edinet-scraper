@@ -35,17 +35,37 @@ export EDINET_API_KEY="your-api-key-here"
 
 ## 使い方
 
-### 基本的な使い方
+### 方法1：Dockerを使う（推奨）
+
+Dockerを使えば、Goのインストール不要で実行できます。
 
 ```bash
+# Dockerイメージをビルド
+docker build -t edinet-scraper .
+
+# 実行（.envファイルから環境変数を読み込む）
+docker run --rm --env-file .env edinet-scraper -date=2024-01-15
+
+# または docker-compose を使う
+docker-compose run --rm edinet-scraper -date=2024-01-15
+```
+
+### 方法2：ローカルで実行
+
+```bash
+# 直接実行
 go run main.go -date=2024-01-15
+
+# またはビルドしてから実行
+go build -o edinet-scraper
+./edinet-scraper -date=2024-01-15
 ```
 
 ### 実行例
 
 ```bash
 # 2024年1月15日の書類一覧を取得
-go run main.go -date=2024-01-15
+docker run --rm --env-file .env edinet-scraper -date=2024-01-15
 
 # 出力例：
 # 日付 2024-01-15 の書類一覧を取得中...
@@ -74,7 +94,12 @@ edinet-scraper/
 │   └── document.go     # データ構造定義
 ├── config/
 │   └── config.go       # 設定管理
+├── Dockerfile           # Docker設定
+├── docker-compose.yml   # Docker Compose設定
+├── .dockerignore        # Dockerビルド除外ファイル
+├── .env.example         # 環境変数テンプレート
 ├── go.mod              # Go modules
+├── go.sum              # Go modules checksum
 ├── design.md           # 設計書
 ├── requirements.md     # 要件定義書
 └── README.md           # このファイル
