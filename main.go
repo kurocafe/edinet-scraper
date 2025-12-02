@@ -51,7 +51,7 @@ func displayResults(response *models.DocumentListResponse) {
 	fmt.Println("========================================")
 	fmt.Printf("取得件数: %d件\n", response.Metadata.ResultSet.Count)
 	fmt.Printf("処理日時: %s\n", response.Metadata.ProcessTime)
-	fmt.Println("========================================\n")
+	fmt.Println("========================================")
 
 	if len(response.Results) == 0 {
 		fmt.Println("該当する書類がありませんでした。")

@@ -28,7 +28,7 @@ func FetchDocumentList(date string, apiKey string, endPoint string, tp string) (
 	}
 
 	// ヘッダーにAPIキーを設定
-	req.Header.Set("Subscription-Key", apiKey)
+	// req.Header.Set("Subscription-Key", apiKey)
 
 	// HTTPクライアントの作成とリクエストの送信
 	client := &http.Client{}
