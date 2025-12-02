@@ -9,6 +9,10 @@ services:
     container_name: edinet-scraper
     env_file:
       - .env
+    tty: true
+    volumes:
+      - .:/app/
+
     # デフォルトの日付を上書きする場合はコメントを外す
     # command: ["-date=2024-02-01"]
     # または環境変数で指定

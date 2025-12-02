@@ -13,26 +13,26 @@ RUN go mod download
 # ソースコードをコピー
 COPY . .
 
-# ビルド（静的リンク）
-RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o edinet-scraper .
+# # ビルド（静的リンク）
+# RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o edinet-scraper .
 
-# 実行ステージ（軽量イメージ）
-FROM alpine:latest
+# # 実行ステージ（軽量イメージ）
+# FROM alpine:latest
 
-# タイムゾーンとCA証明書のインストール
-RUN apk --no-cache add ca-certificates tzdata
+# # タイムゾーンとCA証明書のインストール
+# RUN apk --no-cache add ca-certificates tzdata
 
-WORKDIR /root/
+# WORKDIR /root/
 
-# ビルドステージから実行ファイルをコピー
-COPY --from=builder /app/edinet-scraper .
-COPY --from=builder /app/.env.example .
+# # ビルドステージから実行ファイルをコピー
+# COPY --from=builder /app/edinet-scraper .
+# COPY --from=builder /app/.env.example .
 
-# 実行権限を付与
-RUN chmod +x ./edinet-scraper
+# # 実行権限を付与
+# RUN chmod +x ./edinet-scraper
 
-# デフォルトのエントリーポイント
-ENTRYPOINT ["./edinet-scraper"]
+# # デフォルトのエントリーポイント
+# ENTRYPOINT ["./edinet-scraper"]
 
-# デフォルトの引数（上書き可能）
-CMD ["-date=2024-01-15"]
+# # デフォルトの引数（上書き可能）
+# CMD ["-date=2024-01-15"]

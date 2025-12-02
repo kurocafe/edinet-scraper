@@ -37,7 +37,7 @@ func main() {
 
 	// 書類一覧の取得
 	fmt.Printf("日付 %s の書類一覧を取得中...\n\n", *date)
-	response, err := api.FetchDocumentList(*date, apiKey)
+	response, err := api.FetchDocumentList(*date, apiKey, config.APIEndpoint, config.DefaultType)
 	if err != nil {
 		log.Fatalf("書類一覧の取得に失敗しました: %v", err)
 	}
